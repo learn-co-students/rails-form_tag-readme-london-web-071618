@@ -1,0 +1,23 @@
+
+
+
+<!-- <form action="<%= posts_path %>" method="POST"> -->
+<!-- using a helper method to assist with streamlining view template <code> -->
+<!-- using ActionView helper methods -->
+<h3>Post Form</h3>
+<%= form_tag posts_path do %>
+
+  <label>Post title:</label><br>
+  <input type="text" id="post_title" name="post[title]"><br>
+
+  <label>Post description:</label><br>
+
+  <textarea id="post_description" name="post[description]"></textarea><br>
+
+<!-- fixing CSRF - Cross-Site Request Forgery -->
+ <!-- replace that hidden authenticity token input field with a Rails hidden_field_tag -->
+ <!-- <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> -->
+ <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="submit" value="Submit Post">
+  <% end %>
+</form>
